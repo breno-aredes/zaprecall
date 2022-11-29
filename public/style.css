@@ -15,8 +15,9 @@ body {
     border-radius: 5px;
     background-color: #FFFFFF;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 25px;
+
 }
 
 h1 {
