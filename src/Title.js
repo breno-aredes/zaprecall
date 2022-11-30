@@ -4,8 +4,8 @@ import styled from "styled-components";
 export default function Title() {
     return (
         <LogoContainer>
-            <LogoImg src={logo} alt="" />
-            <Logoh1>zaprecall</Logoh1>
+            <img src={logo} alt="" />
+            <h1>zaprecall</h1>
         </LogoContainer>
     )
 }
@@ -16,18 +16,16 @@ const LogoContainer = styled.div`
     display: flex;
     align-items: center;
     margin: 40px 0 20px 0;
-  }`
-
-const LogoImg = styled.img`
-width: 52px;
+    img{
+        width: 52px;
+    }
+    h1{
+        font-family: 'Righteous';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 45px;
+        color: #FFFFFF;
+        margin-left: 20px;
+}
 `
-
-const Logoh1 = styled.h1`
-font-family: 'Righteous';
-font-style: normal;
-font-weight: 400;
-font-size: 36px;
-line-height: 45px;
-color: #FFFFFF;
-margin-left: 20px;
-` 
