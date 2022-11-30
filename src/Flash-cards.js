@@ -25,10 +25,10 @@ export default function FlashCards() {
                     return (
                         <OpenQuestion>
                             <p>{card.answer}</p>
-                            <ContainerButtons>
-                                <button>Não lembrei</button>
-                                <button>Quase não lembrei</button>
-                                <button>Zap!</button>
+                            <ContainerButtons >
+                                <Button k="#FF3030">Não lembrei</Button>
+                                <Button k="#FF922E">Quase não lembrei</Button>
+                                <Button k='#2FBE34'>Zap!</Button>
                             </ContainerButtons>
                         </OpenQuestion>)
 
@@ -105,8 +105,10 @@ const OpenQuestion = styled.div`
 const ContainerButtons = styled.div`
     display: flex;
     width: 100%;
-    justify-content: space-between;
-    button {
+    justify-content: space-between;    
+`
+
+const Button = styled.button`
     width: 90px;
     font-family: 'Recursive';
     font-style: normal;
@@ -118,8 +120,8 @@ const ContainerButtons = styled.div`
     justify-content: center;
     text-align: center;
     color: #FFFFFF;
-    background: blue;
+    background-color: ${props => props.k};
     border-radius: 5px;
     border: 1px solid blue;
-    padding: 5px;}
+    padding: 5px;
 `
