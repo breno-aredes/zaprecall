@@ -1,24 +1,16 @@
 import seta_play from "./assets/img/seta_play.png"
+import cards from "./Cards"
+
 
 export default function FlashCards() {
     return (
         <>
-            <div class="pergunta-fechada">
-                <p>Pergunta 1</p>
-                <img src={seta_play} />
-            </div>
-            <div class="pergunta-fechada">
-                <p>Pergunta 2</p>
-                <img src={seta_play} />
-            </div>
-            <div class="pergunta-fechada">
-                <p>Pergunta 3</p>
-                <img src={seta_play} />
-            </div>
-            <div class="pergunta-fechada">
-                <p>Pergunta 4</p>
-                <img src={seta_play} />
-            </div>
+            {cards.map((card, index) =>
+                <div class="pergunta-fechada">
+                    <p>Pergunta {index + 1}</p>
+                    <img src={seta_play} />
+                </div>)
+            }
         </>
     )
 }
