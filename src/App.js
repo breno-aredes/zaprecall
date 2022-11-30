@@ -5,11 +5,11 @@ import Title from "./Title";
 
 function App() {
   return (
-    <>
+    <div className="screen-container">
       <Title />
       <FlashCards />
       <Footer />
-    </>
+    </div>
   )
 }
 

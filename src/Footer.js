@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <footer>
+        <footer className="footer-concluidos ">
             0/4 CONCLUÍDOS
         </footer>
     )
