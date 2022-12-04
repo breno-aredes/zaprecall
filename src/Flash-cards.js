@@ -18,36 +18,32 @@ export default function FlashCards() {
         setIndexTwo([...clickedIndexTwo, index])
     }
 
+    function ClickButton(k) {
+        alert(k)
+    }
+
     return (
         <>
             {cards.map((card, index) => {
-                if (clickedIndex.includes(index) && clickedIndexTwo.includes(index)) {
+                if (clickedIndex.includes(index)) {
                     return (
-                        <OpenQuestion>
-                            <p>{card.answer}</p>
-                            <ContainerButtons >
-                                <Button k="#FF3030">Não lembrei</Button>
-                                <Button k="#FF922E">Quase não lembrei</Button>
-                                <Button k='#2FBE34'>Zap!</Button>
-                            </ContainerButtons>
-                        </OpenQuestion>)
-
-                }
-                else if (clickedIndex.includes(index)) {
-                    return (
-                        <OpenQuestion>
-                            <p>{card.question}</p>
+                        <OpenQuestion display={!clickedIndexTwo.includes(index) ? "flex" : "none"}>
+                            <p>{!clickedIndexTwo.includes(index) ? `${card.question}` : `${card.answer}`}</p>
                             <img src={seta_virar} onClick={() => clickedCardTwo(index)} />
-                        </OpenQuestion>)
-
+                            <ContainerButtons display={clickedIndexTwo.includes(index) ? 'flex' : "none"} >
+                                <Button color="#FF3030" onClick={() => ClickButton('#FF3030')}>Não lembrei</Button>
+                                <Button color="#FF922E" onClick={() => ClickButton('#FF922E')}>Quase não lembrei</Button>
+                                <Button color='#2FBE34' onClick={() => ClickButton('#2FBE34')}>Zap!</Button>
+                            </ContainerButtons>
+                        </OpenQuestion>
+                    )
                 }
                 else {
                     return (
                         <ClosedQuestion>
-                            <p>{clickedIndex.includes(index) ? `${card.question}` : `Pergunta ${index + 1}`} </p>
+                            <p>Pergunta {index + 1} </p>
                             <img src={seta_play} onClick={() => clickedCard(index)} />
                         </ClosedQuestion>)
-
                 }
             }
             )}
@@ -96,6 +92,7 @@ const OpenQuestion = styled.div`
   flex-direction: column;
   justify-content: space-between;
   img {
+    display:${props => props.display}   ;
     position: absolute;
     bottom: 10px;
     right: 10px;
@@ -103,9 +100,11 @@ const OpenQuestion = styled.div`
 `
 
 const ContainerButtons = styled.div`
-    display: flex;
+    display: ${props => props.display};
     width: 100%;
     justify-content: space-between;    
+    margin-top: 20px;
+    
 `
 
 const Button = styled.button`
@@ -120,8 +119,8 @@ const Button = styled.button`
     justify-content: center;
     text-align: center;
     color: #FFFFFF;
-    background-color: ${props => props.k};
+    background-color: ${props => props.color};
     border-radius: 5px;
-    border: 1px solid blue;
+    border: 1px solid ${props => props.color};
     padding: 5px;
 `
