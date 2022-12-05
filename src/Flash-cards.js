@@ -40,21 +40,21 @@ export default function FlashCards(props) {
             {cards.map((card, index) => {
                 if (!clickedIndex.includes(index) || clickedIndexThree.includes(index)) {
                     return (
-                        <ClosedQuestion color={clickedIndexThree.includes(index) ? `${clickedColor[index]}` : '#333333'}
+                        <ClosedQuestion data-test="flashcard" color={clickedIndexThree.includes(index) ? `${clickedColor[index]}` : '#333333'}
                             decoration={clickedIndexThree.includes(index) && 'line-through'}>
-                            <p>Pergunta {index + 1} </p>
-                            <img src={!clickedIndexThree.includes(index) ? seta_play : iconeList[index]} onClick={() => clickedCard(index)} />
+                            <p data-test="flashcard-text">Pergunta {index + 1} </p>
+                            <img src={!clickedIndexThree.includes(index) ? seta_play : iconeList[index]} onClick={() => clickedCard(index)} data-test="play-btn" />
                         </ClosedQuestion>)
                 }
                 if (clickedIndex.includes(index)) {
                     return (
-                        <OpenQuestion display={!clickedIndexTwo.includes(index) ? "flex" : "none"}>
-                            <p>{!clickedIndexTwo.includes(index) ? `${card.question}` : `${card.answer}`}</p>
-                            <img src={seta_virar} onClick={() => clickedCardTwo(index)} />
+                        <OpenQuestion data-test="flashcard" display={!clickedIndexTwo.includes(index) ? "flex" : "none"}>
+                            <p data-test="flashcard-text">{!clickedIndexTwo.includes(index) ? `${card.question}` : `${card.answer}`}</p>
+                            <img src={seta_virar} onClick={() => clickedCardTwo(index)} data-test="turn-btn" />
                             <ContainerButtons display={clickedIndexTwo.includes(index) ? 'flex' : "none"} >
-                                <Button color="#FF3030" onClick={() => ClickButton(index, '#FF3030', icone_erro)}>Não lembrei</Button>
-                                <Button color="#FF922E" onClick={() => ClickButton(index, '#FF922E', icone_quase)}>Quase não lembrei</Button>
-                                <Button color='#2FBE34' onClick={() => ClickButton(index, '#2FBE34', icone_certo)}>Zap!</Button>
+                                <Button data-test="no-btn" color="#FF3030" onClick={() => ClickButton(index, '#FF3030', icone_erro)}>Não lembrei</Button>
+                                <Button data-test="partial-btn" color="#FF922E" onClick={() => ClickButton(index, '#FF922E', icone_quase)}>Quase não lembrei</Button>
+                                <Button data-test="zap-btn" color='#2FBE34' onClick={() => ClickButton(index, '#2FBE34', icone_certo)}>Zap!</Button>
                             </ContainerButtons>
                         </OpenQuestion>
                     )

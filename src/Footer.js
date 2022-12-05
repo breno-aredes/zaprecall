@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export default function Footer(props) {
     return (
-        <FinishedFooter>
+        <FinishedFooter data-test="footer" >
             {props.count}/8 CONCLUÍDOS
         </FinishedFooter>
     )
