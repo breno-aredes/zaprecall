@@ -16,7 +16,7 @@ export default function FlashCards(props) {
     const [clickedColor, setColor] = useState([])
     const [iconeList, setIcone] = useState([])
 
-    const { setCount, count } = props
+    const { setCount, count, iconFooter, setIconFooter } = props
 
     function clickedCard(index) {
         setIndex([...clickedIndex, index])
@@ -33,6 +33,7 @@ export default function FlashCards(props) {
         iconeList[index] = icone
         setIcone(iconeList)
         setCount(count + 1)
+        setIconFooter([...iconFooter, icone])
     }
 
     return (

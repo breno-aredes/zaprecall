@@ -7,14 +7,15 @@ import { useState } from "react";
 
 export default function TodoMain() {
     const [count, setCount] = useState(0)
+    const [iconFooter, setIconFooter] = useState([])
 
     return (
         <ScreenContainer>
             <GlobalStyle />
 
             <Title />
-            <FlashCards setCount={setCount} count={count} />
-            <Footer count={count} />
+            <FlashCards setCount={setCount} count={count} iconFooter={iconFooter} setIconFooter={setIconFooter} />
+            <Footer count={count} iconFooter={iconFooter} />
 
         </ScreenContainer>
     )
