@@ -28,8 +28,10 @@ export default function FlashCards(props) {
 
     function ClickButton(index, color, icone) {
         setIndexThree([...clickedIndexThree, index])
-        setColor([...clickedColor, color])
-        setIcone([...iconeList, icone])
+        clickedColor[index] = color
+        setColor(clickedColor)
+        iconeList[index] = icone
+        setIcone(iconeList)
         setCount(count + 1)
     }
 

@@ -15,7 +15,7 @@ export default function Title() {
 const LogoContainer = styled.div`
     display: flex;
     align-items: center;
-    margin: 40px 0 20px 0;
+    margin: 48px 0 59px 0;
     img{
         width: 52px;
     }
