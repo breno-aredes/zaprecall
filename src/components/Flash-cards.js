@@ -1,9 +1,9 @@
 import { useState } from "react"
-import seta_play from "./assets/img/seta_play.png"
-import seta_virar from "./assets/img/seta_virar.png"
-import icone_certo from "./assets/img/icone_certo.png"
-import icone_erro from "./assets/img/icone_erro.png"
-import icone_quase from "./assets/img/icone_quase.png"
+import seta_play from "../assets/img/seta_play.png"
+import seta_virar from "../assets/img/seta_virar.png"
+import icone_certo from "../assets/img/icone_certo.png"
+import icone_erro from "../assets/img/icone_erro.png"
+import icone_quase from "../assets/img/icone_quase.png"
 import cards from "./Cards"
 import styled from "styled-components";
 
