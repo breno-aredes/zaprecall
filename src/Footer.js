@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export default function Footer() {
+export default function Footer(props) {
     return (
         <FinishedFooter>
-            0/8 CONCLUÍDOS
+            {props.count}/8 CONCLUÍDOS
         </FinishedFooter>
     )
 }

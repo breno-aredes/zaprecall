@@ -9,12 +9,14 @@ import styled from "styled-components";
 
 
 
-export default function FlashCards() {
+export default function FlashCards(props) {
     const [clickedIndex, setIndex] = useState([])
     const [clickedIndexTwo, setIndexTwo] = useState([])
     const [clickedIndexThree, setIndexThree] = useState([])
     const [clickedColor, setColor] = useState([])
     const [iconeList, setIcone] = useState([])
+
+    const { setCount, count } = props
 
     function clickedCard(index) {
         setIndex([...clickedIndex, index])
@@ -28,6 +30,7 @@ export default function FlashCards() {
         setIndexThree([...clickedIndexThree, index])
         setColor([...clickedColor, color])
         setIcone([...iconeList, icone])
+        setCount(count + 1)
     }
 
     return (

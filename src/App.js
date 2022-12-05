@@ -3,17 +3,18 @@ import Footer from "./Footer";
 import Title from "./Title";
 import styled from "styled-components";
 import GlobalStyle from "./assets/Styles/GlobalStyles";
-
+import { useState } from "react";
 
 function App() {
+  const [count, setCount] = useState(0)
 
   return (
     <ScreenContainer>
       <GlobalStyle />
 
       <Title />
-      <FlashCards />
-      <Footer />
+      <FlashCards setCount={setCount} count={count} />
+      <Footer count={count} />
 
     </ScreenContainer>
   )
