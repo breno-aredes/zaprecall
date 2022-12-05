@@ -43,7 +43,9 @@ export default function FlashCards(props) {
                         <ClosedQuestion data-test="flashcard" color={clickedIndexThree.includes(index) ? `${clickedColor[index]}` : '#333333'}
                             decoration={clickedIndexThree.includes(index) && 'line-through'}>
                             <p data-test="flashcard-text">Pergunta {index + 1} </p>
-                            <img src={!clickedIndexThree.includes(index) ? seta_play : iconeList[index]} onClick={() => clickedCard(index)} data-test="play-btn" />
+                            <img src={!clickedIndexThree.includes(index) ? seta_play : iconeList[index]} onClick={() => clickedCard(index)}
+                                data-test={!clickedIndexThree.includes(index) ? 'play-btn' : `${(clickedColor[index] === '#FF3030' && 'no-icon') ||
+                                    (clickedColor[index] === "#FF922E" && "partial-icon") || (clickedColor[index] === '#2FBE34' && 'zap-icon')}`} />
                         </ClosedQuestion>)
                 }
                 if (clickedIndex.includes(index)) {
