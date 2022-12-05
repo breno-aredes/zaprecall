@@ -6,6 +6,7 @@ import GlobalStyle from "./assets/Styles/GlobalStyles";
 
 
 function App() {
+
   return (
     <ScreenContainer>
       <GlobalStyle />

@@ -1,6 +1,9 @@
 import { useState } from "react"
 import seta_play from "./assets/img/seta_play.png"
 import seta_virar from "./assets/img/seta_virar.png"
+import icone_certo from "./assets/img/icone_certo.png"
+import icone_erro from "./assets/img/icone_erro.png"
+import icone_quase from "./assets/img/icone_quase.png"
 import cards from "./Cards"
 import styled from "styled-components";
 
@@ -9,6 +12,9 @@ import styled from "styled-components";
 export default function FlashCards() {
     const [clickedIndex, setIndex] = useState([])
     const [clickedIndexTwo, setIndexTwo] = useState([])
+    const [clickedIndexThree, setIndexThree] = useState([])
+    const [clickedColor, setColor] = useState([])
+    const [iconeList, setIcone] = useState([])
 
     function clickedCard(index) {
         setIndex([...clickedIndex, index])
@@ -18,32 +24,35 @@ export default function FlashCards() {
         setIndexTwo([...clickedIndexTwo, index])
     }
 
-    function ClickButton(k) {
-        alert(k)
+    function ClickButton(index, color, icone) {
+        setIndexThree([...clickedIndexThree, index])
+        setColor([...clickedColor, color])
+        setIcone([...iconeList, icone])
     }
 
     return (
         <>
             {cards.map((card, index) => {
+                if (!clickedIndex.includes(index) || clickedIndexThree.includes(index)) {
+                    return (
+                        <ClosedQuestion color={clickedIndexThree.includes(index) ? `${clickedColor[index]}` : '#333333'}
+                            decoration={clickedIndexThree.includes(index) && 'line-through'}>
+                            <p>Pergunta {index + 1} </p>
+                            <img src={!clickedIndexThree.includes(index) ? seta_play : iconeList[index]} onClick={() => clickedCard(index)} />
+                        </ClosedQuestion>)
+                }
                 if (clickedIndex.includes(index)) {
                     return (
                         <OpenQuestion display={!clickedIndexTwo.includes(index) ? "flex" : "none"}>
                             <p>{!clickedIndexTwo.includes(index) ? `${card.question}` : `${card.answer}`}</p>
                             <img src={seta_virar} onClick={() => clickedCardTwo(index)} />
                             <ContainerButtons display={clickedIndexTwo.includes(index) ? 'flex' : "none"} >
-                                <Button color="#FF3030" onClick={() => ClickButton('#FF3030')}>Não lembrei</Button>
-                                <Button color="#FF922E" onClick={() => ClickButton('#FF922E')}>Quase não lembrei</Button>
-                                <Button color='#2FBE34' onClick={() => ClickButton('#2FBE34')}>Zap!</Button>
+                                <Button color="#FF3030" onClick={() => ClickButton(index, '#FF3030', icone_erro)}>Não lembrei</Button>
+                                <Button color="#FF922E" onClick={() => ClickButton(index, '#FF922E', icone_quase)}>Quase não lembrei</Button>
+                                <Button color='#2FBE34' onClick={() => ClickButton(index, '#2FBE34', icone_certo)}>Zap!</Button>
                             </ContainerButtons>
                         </OpenQuestion>
                     )
-                }
-                else {
-                    return (
-                        <ClosedQuestion>
-                            <p>Pergunta {index + 1} </p>
-                            <img src={seta_play} onClick={() => clickedCard(index)} />
-                        </ClosedQuestion>)
                 }
             }
             )}
@@ -70,7 +79,8 @@ const ClosedQuestion = styled.div`
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    color: #333333;
+    color: ${props => props.color};
+    text-decoration-line: ${props => props.decoration} ;
   }`
 
 const OpenQuestion = styled.div`
