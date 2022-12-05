@@ -5,11 +5,13 @@ import icone_quase from "../assets/img/icone_quase.png"
 
 export default function Footer(props) {
 
+
+
     return (
         <FinishedFooter data-test="footer" >
             {props.count}/8 CONCLUÍDOS
             <div>
-                {props.iconFooter.map((i) => <img src={i} data-test={`${(i === icone_erro && 'no-icon') ||
+                {props.iconFooter.map((i, index) => <img key={index} src={i} data-test={`${(i === icone_erro && 'no-icon') ||
                     (i === icone_quase && "partial-icon") || (i === icone_certo && 'zap-icon')}`} />
                 )}
             </div>
@@ -37,5 +39,6 @@ color: #333333;
 padding: 10px;
 img{
     margin-left: 5px;
+    margin-top: 6px;
 }
 `
