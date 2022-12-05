@@ -40,7 +40,7 @@ export default function FlashCards(props) {
             {cards.map((card, index) => {
                 if (!clickedIndex.includes(index) || clickedIndexThree.includes(index)) {
                     return (
-                        <ClosedQuestion data-test="flashcard" color={clickedIndexThree.includes(index) ? `${clickedColor[index]}` : '#333333'}
+                        <ClosedQuestion key={index} data-test="flashcard" color={clickedIndexThree.includes(index) ? `${clickedColor[index]}` : '#333333'}
                             decoration={clickedIndexThree.includes(index) && 'line-through'}>
                             <p data-test="flashcard-text">Pergunta {index + 1} </p>
                             <img src={!clickedIndexThree.includes(index) ? seta_play : iconeList[index]} onClick={() => clickedCard(index)}
@@ -50,7 +50,7 @@ export default function FlashCards(props) {
                 }
                 if (clickedIndex.includes(index)) {
                     return (
-                        <OpenQuestion data-test="flashcard" display={!clickedIndexTwo.includes(index) ? "flex" : "none"}>
+                        <OpenQuestion key={index} data-test="flashcard" display={!clickedIndexTwo.includes(index) ? "flex" : "none"}>
                             <p data-test="flashcard-text">{!clickedIndexTwo.includes(index) ? `${card.question}` : `${card.answer}`}</p>
                             <img src={seta_virar} onClick={() => clickedCardTwo(index)} data-test="turn-btn" />
                             <ContainerButtons display={clickedIndexTwo.includes(index) ? 'flex' : "none"} >
